@@ -161,7 +161,7 @@ def add_book(title, author, publication_year, genre, read_status):
     st.session_state.library.append(book)
     save_library()
     st.session_state.book_added = True
-    time.sleep(0.5)  # ⏳ Animation Delay
+    time.sleep(0.5)  #  Animation Delay
 
 
 #  Remove books
@@ -238,10 +238,12 @@ def get_library_stats():
 # Animation for loading library
 load_library()
 st.sidebar.markdown(
-    "<h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True
+    "<h1 style='text-align: center;'> 📌 Navigation</h1>", unsafe_allow_html=True
 )
 
-lottie_book = load_lottieurl("https://lottie.host/7a9375c3-a642-4467-9a22-090a296dd439/sp5GhIf6M2.json")
+lottie_book = load_lottieurl(
+    "https://lottie.host/7a9375c3-a642-4467-9a22-090a296dd439/sp5GhIf6M2.json"
+)
 
 if lottie_book:
     with st.sidebar:
@@ -278,7 +280,7 @@ def create_visualization(stats):
             ]
         )
         fig_read_status.update_layout(
-            title_text="📊 Read vs Unread Books", showlegend=True, height=400
+            title_text="Read vs Unread Books", showlegend=True, height=400
         )
         st.plotly_chart(fig_read_status, use_container_width=True)
 
@@ -298,7 +300,7 @@ def create_visualization(stats):
             color_continuous_scale=px.colors.sequential.Blues,
         )
         fig_genres.update_layout(
-            title_text="📚 Books by Genre",
+            title_text=" Books by Genre",
             xaxis_title="Genres",
             yaxis_title="Number of books",
             height=400,
@@ -316,7 +318,7 @@ def create_visualization(stats):
             decades_df, x="Decade", y="Count", markers=True, line_shape="spline"
         )
         fig_decades.update_layout(
-            title_text="📅 Books by Decade",
+            title_text=" Books by Decade",
             xaxis_title="Decade",
             yaxis_title="Number of books",
             height=400,
@@ -345,7 +347,7 @@ if st.session_state.current_view == "add":
                 max_value=datetime.now().year,
                 step=1,
                 value=2023,
-            )  
+            )
 
         with col2:
             genre = st.selectbox(
@@ -364,7 +366,7 @@ if st.session_state.current_view == "add":
                     "History",
                     "Other",
                 ],
-            )  
+            )
             read_status = st.radio("Read Status", ["Read", "Unread"], horizontal=True)
             read_book = read_status == "Read"
         submit_button = st.form_submit_button(label="Add Book")
@@ -376,7 +378,7 @@ if st.session_state.current_view == "add":
         st.markdown(
             "<div class='success-message'> ✅ Book added successfully! </div>",
             unsafe_allow_html=True,
-        ) 
+        )
         st.balloons()
         st.session_state.book_added = False
 elif st.session_state.current_view == "library":
@@ -389,9 +391,7 @@ elif st.session_state.current_view == "library":
         )
     else:
         cols = st.columns(2)
-        for i, book in enumerate(
-            st.session_state.library
-        ):  
+        for i, book in enumerate(st.session_state.library):
             with cols[i % 2]:
                 st.markdown(
                     f"""<div class='book-card'>
@@ -405,7 +405,7 @@ elif st.session_state.current_view == "library":
                             </div>
 """,
                     unsafe_allow_html=True,
-                ) 
+                )
                 col1, col2 = st.columns(2)
                 with col1:
                     if st.button(
@@ -431,15 +431,13 @@ elif st.session_state.current_view == "library":
         )
         st.session_state.book_removed = False
 elif st.session_state.current_view == "search":
-    st.markdown(
-        "<h2 class='sub-header'> 🔍 Search Books </h2>", unsafe_allow_html=True
-    )  
+    st.markdown("<h2 class='sub-header'> 🔍 Search Books </h2>", unsafe_allow_html=True)
 
 
-search_by = st.selectbox("🔍 Search by:", ["📖 Title", "✍️ Author", "📚 Genre"])
-search_term = st.text_input("🔎 Enter search term:")
+search_by = st.selectbox("Search by:", ["📖 Title", "✍️ Author", "📚 Genre"])
+search_term = st.text_input(" Enter search term:")
 
-if st.button("🔍 Search", use_container_width=False):
+if st.button("Search", use_container_width=False):
     if search_term:
         with st.spinner("🔄 Searching..."):
             time.sleep(0.5)
@@ -504,4 +502,4 @@ elif st.session_state.current_view == "stats":
                 st.markdown(f"**✍️ {author}**: {count} book{'s' if count > 1 else ''}")
 
 st.markdown("---")
-st.markdown("© 2025 🏛️ Fiza Asif - Personal Library Manager", unsafe_allow_html=True)
+st.markdown("© 2025 - 🏛️ Fiza Asif - Personal Library Manager", unsafe_allow_html=True)
