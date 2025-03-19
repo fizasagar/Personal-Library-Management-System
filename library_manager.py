@@ -238,10 +238,10 @@ def get_library_stats():
 # Animation for loading library
 load_library()
 st.sidebar.markdown(
-    "<h1 style='text-align: center;'>📌 Navigation</h1>", unsafe_allow_html=True
+    "<h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True
 )
 
-lottie_book = load_lottieurl("https://assets9.lottiefiles.com/temp/1f20_aKAfIn.json")
+lottie_book = load_lottieurl("https://lottie.host/7a9375c3-a642-4467-9a22-090a296dd439/sp5GhIf6M2.json")
 
 if lottie_book:
     with st.sidebar:
