@@ -435,7 +435,7 @@ elif st.session_state.current_view == "search":
 
 
  # Search options
-    search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])
+    search_by = st.selectbox("Search by:", ["📖 Title", "✍️ Author", "📚 Genre"])
     search_term = st.text_input("Enter search term:")
     
     if st.button("Search", use_container_width=False):
