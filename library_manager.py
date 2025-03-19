@@ -377,7 +377,7 @@ if st.session_state.current_view == "add":
             "<div class='success-message'> ✅ Book added successfully! </div>",
             unsafe_allow_html=True,
         ) 
-        st.stars() #Adding stars here
+        st.balloons()
         st.session_state.book_added = False
 elif st.session_state.current_view == "library":
     st.markdown("<h2 class='sub-header'> 📖 Your Library </h2>", unsafe_allow_html=True)
