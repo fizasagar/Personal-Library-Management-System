@@ -10,6 +10,15 @@ from streamlit_lottie import st_lottie
 import requests
 
 # Set page configuration
+st.set_page_config(
+    page_title="Personal Library Manager",
+    page_icon="📚",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Custom CSS for styling
+st.markdown("""
 <style>
     .main-header {
         font-size: 3rem !important;
@@ -17,9 +26,7 @@ import requests
         font-weight: 700;
         margin-bottom: 1rem;
         text-align: center;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
-            
     .sub-header {
         font-size: 1.8rem !important;
         color: #3B82F6;
@@ -27,21 +34,18 @@ import requests
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
-
     .success-message {
         padding: 1rem;
         background-color: #ECFDF5;
         border-left: 5px solid #10B981;
         border-radius: 0.375rem;
     }
-            
     .warning-message {
         padding: 1rem;
         background-color: #FEF3C7;
         border-left: 5px solid #F59E0B;
         border-radius: 0.375rem;
     }
-            
     .book-card {
         background-color: #F3F4F6;
         border-radius: 0.5rem;
@@ -50,36 +54,9 @@ import requests
         border-left: 5px solid #3B82F6;
         transition: transform 0.3s ease;
     }
-            
     .book-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-    }
-            
-    .read-badge {
-        background-color: #10B981;
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-    }
-            
-    .unread-badge {
-        background-color: #F87171;
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.875rem;
-        font-weight: 600;    
-    }
-
-    .action-button {
-        margin-right: 0.5rem;
-    }
-            
-    .stButton>button {
-        border-radius: 0.375rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -104,7 +81,7 @@ if 'book_added' not in st.session_state:
 if 'book_removed' not in st.session_state:
     st.session_state.book_removed = False
 if 'current_view' not in st.session_state:
-    st.session_state.current_view = "library"  # Fixed typo from "curreent_view"
+    st.session_state.current_view = "library"  "
 
 # Load library from JSON file
 def load_library():
@@ -115,7 +92,7 @@ def load_library():
 # Save library to JSON file
 def save_library():
     try:
-        with open('library.json', 'w') as file:  # Fixed file name typo
+        with open('library.json', 'w') as file: 
             json.dump(st.session_state.library, file, indent=4)
     except Exception as e:
         st.error(f"Error saving library: {e}")
@@ -165,7 +142,7 @@ def get_library_stats():
         authors[book['author']] = authors.get(book['author'], 0) + 1
         
         decade = (book['publication_year'] // 10) * 10
-        decades[decade] = decades.get(decade, 0) + 1  # Fixed issue with dictionary update
+        decades[decade] = decades.get(decade, 0) + 1  
 
     return {
         'total_books': total_books,
@@ -219,4 +196,4 @@ elif st.session_state.current_view == "library_statistics":
     st.metric("Percentage Read", f"{stats['percent_read']:.1f}%")
 
 st.markdown("---")
-st.markdown("© 2025 -  Fiza Asif - Personal Library Manager", unsafe_allow_html=True)
+st.markdown("© 2025 - Fiza Asif - Personal Library Manager", unsafe_allow_html=True)
