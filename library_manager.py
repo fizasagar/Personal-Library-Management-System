@@ -333,6 +333,7 @@ if st.session_state.current_view == "add":
     st.markdown("<h2 class='sub-header'>📝 Add a New Book</h2>", unsafe_allow_html=True)
     
     # Input form for adding books
+    
     with st.form(key='add_book_form'):
         col1, col2 = st.columns(2)
         
@@ -358,7 +359,7 @@ if st.session_state.current_view == "add":
     
     # Display success message if book was added
     if st.session_state.book_added:
-        st.markdown("<div class='success-message'>Book added successfully!</div>", unsafe_allow_html=True)
+        st.markdown("<div class='success-message'>✔ Book added successfully!</div>", unsafe_allow_html=True)
         st.balloons()  # Show celebration balloons
         st.session_state.book_added = False
 
