@@ -81,7 +81,7 @@ if 'book_added' not in st.session_state:
 if 'book_removed' not in st.session_state:
     st.session_state.book_removed = False
 if 'current_view' not in st.session_state:
-    st.session_state.current_view = "library"  "
+    st.session_state.current_view = "library"  
 
 # Load library from JSON file
 def load_library():
