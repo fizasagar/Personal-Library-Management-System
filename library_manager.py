@@ -481,9 +481,6 @@ elif st.session_state.current_view == "stats":
         with col3:
             st.metric("Percentage Read", f"{stats['percent_read']:.1f}%")
         
-        # Create visualizations
-        # create_visualizations(stats)
-        
         # Display top authors
         if stats['authors']:
             st.markdown("<h3>Top Authors</h3>", unsafe_allow_html=True)
