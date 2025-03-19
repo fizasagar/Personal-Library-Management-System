@@ -330,57 +330,39 @@ st.markdown(
     "<h1 class='main-header'> 📚 Personal Library Manager </h1>", unsafe_allow_html=True
 )
 if st.session_state.current_view == "add":
-    st.markdown(
-        "<h2 class='sub-header'> ➕ Add a New Book </h2>", unsafe_allow_html=True
-    )
-
-    # Adding books input form
-    with st.form(key="add_book_form"):
+    st.markdown("<h2 class='sub-header'>📝 Add a New Book</h2>", unsafe_allow_html=True)
+    
+    # Input form for adding books
+    with st.form(key='add_book_form'):
         col1, col2 = st.columns(2)
-
+        
         with col1:
             title = st.text_input("Book Title", max_chars=100)
             author = st.text_input("Author", max_chars=100)
-            publication_year = st.number_input(
-                "Publication Year",
-                min_value=1000,
-                max_value=datetime.now().year,
-                step=1,
-                value=2023,
-            )
-
+            publication_year = st.number_input("Publication Year", min_value=1000, max_value=datetime.now().year, step=1, value=2023)
+        
         with col2:
-            genre = st.selectbox(
-                "Genre",
-                [
-                    "Fiction",
-                    "Non-Fiction",
-                    "Science",
-                    "Technology",
-                    "Fantasy",
-                    "Romance",
-                    "Poetry",
-                    "Self-help",
-                    "Art",
-                    "Religion",
-                    "History",
-                    "Other",
-                ],
-            )
+            genre = st.selectbox("Genre", [
+                "Fiction", "Non-Fiction", "Science Fiction", "Fantasy", 
+                "Mystery", "Romance", "Thriller", "Biography", 
+                "History", "Self-Help", "Poetry", "Science", 
+                "Philosophy", "Religion", "Art", "Other"
+            ])
             read_status = st.radio("Read Status", ["Read", "Unread"], horizontal=True)
-            read_book = read_status == "Read"
+            read_bool = read_status == "Read"
+        
         submit_button = st.form_submit_button(label="Add Book")
-
+        
         if submit_button and title and author:
-            add_book(title, author, publication_year, genre, read_book)
-
+            add_book(title, author, publication_year, genre, read_bool)
+    
+    # Display success message if book was added
     if st.session_state.book_added:
-        st.markdown(
-            "<div class='success-message'> ✅ Book added successfully! </div>",
-            unsafe_allow_html=True,
-        )
-        st.balloons()
+        st.markdown("<div class='success-message'>Book added successfully!</div>", unsafe_allow_html=True)
+        st.balloons()  # Show celebration balloons
         st.session_state.book_added = False
+
+
 elif st.session_state.current_view == "library":
     st.markdown("<h2 class='sub-header'> 📖 Your Library </h2>", unsafe_allow_html=True)
 
