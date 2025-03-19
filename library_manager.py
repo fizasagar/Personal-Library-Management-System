@@ -10,19 +10,10 @@ from streamlit_lottie import st_lottie
 import requests
 
 # Set page configuration
-st.set_page_config(
-    page_title="Personal Library Manager",
-    page_icon="📚",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-# Custom CSS for styling
-st.markdown("""
 <style>
     .main-header {
         font-size: 3rem !important;
-        color: #C599B6; /* Soft Muted Purple */
+        color: #1E3A8A;
         font-weight: 700;
         margin-bottom: 1rem;
         text-align: center;
@@ -31,7 +22,7 @@ st.markdown("""
             
     .sub-header {
         font-size: 1.8rem !important;
-        color: #E6B2BA; /* Warm Pink */
+        color: #3B82F6;
         font-weight: 600;
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -39,24 +30,24 @@ st.markdown("""
 
     .success-message {
         padding: 1rem;
-        background-color: #FAD0C4; /* Peach Pink */
-        border-left: 5px solid #C599B6;
+        background-color: #ECFDF5;
+        border-left: 5px solid #10B981;
         border-radius: 0.375rem;
     }
             
     .warning-message {
         padding: 1rem;
-        background-color: #FFF7F3; /* Light Cream */
-        border-left: 5px solid #E6B2BA;
+        background-color: #FEF3C7;
+        border-left: 5px solid #F59E0B;
         border-radius: 0.375rem;
     }
             
     .book-card {
-        background-color: #FFF7F3; /* Soft Cream */
+        background-color: #F3F4F6;
         border-radius: 0.5rem;
         padding: 1rem;
         margin-bottom: 1rem;
-        border-left: 5px solid #C599B6; /* Muted Purple */
+        border-left: 5px solid #3B82F6;
         transition: transform 0.3s ease;
     }
             
@@ -66,7 +57,7 @@ st.markdown("""
     }
             
     .read-badge {
-        background-color: #E6B2BA; /* Soft Pink */
+        background-color: #10B981;
         color: white;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
@@ -75,7 +66,7 @@ st.markdown("""
     }
             
     .unread-badge {
-        background-color: #C599B6; /* Muted Purple */
+        background-color: #F87171;
         color: white;
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
@@ -89,14 +80,6 @@ st.markdown("""
             
     .stButton>button {
         border-radius: 0.375rem;
-        background-color: #E6B2BA !important; /* Warm Pink */
-        color: white !important;
-        border: none !important;
-        transition: background-color 0.3s ease;
-    }
-
-    .stButton>button:hover {
-        background-color: #C599B6 !important; /* Muted Purple */
     }
 </style>
 """, unsafe_allow_html=True)
