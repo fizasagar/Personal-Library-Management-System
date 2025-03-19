@@ -137,15 +137,17 @@ def load_library():
         return False
 
 
-#  Save library
+# Save library with proper exception handling
 def save_library():
     try:
         with open("library.json", "w") as file:
-            json.dump(st.session_state.library, file)
+            json.dump(st.session_state.library, file, indent=4)  # Indentation se JSON readable hoga
+        st.success("📁 Library saved successfully!")
         return True
     except Exception as e:
         st.error(f"⚠️ Error saving library: {e}")
         return False
+
 
 
 #  Add a book to library
