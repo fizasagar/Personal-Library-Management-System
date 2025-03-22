@@ -448,7 +448,7 @@ if st.session_state.search_results:
 else:
     st.warning("⚠️ No book found.")
 
-elif st.session_state.current_view == "stats":
+
     st.markdown("<h2 class='sub-header'>📊 Library Statistics</h2>", unsafe_allow_html=True)
     
     if not st.session_state.library:
