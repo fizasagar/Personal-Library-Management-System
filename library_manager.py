@@ -288,18 +288,17 @@ if lottie_book:
 
     # Navigation options
 nav_options = st.sidebar.radio(
-    "Choose an option:",
-    ["View Library", "Add Book", "Search Books", "Library Statistics"]
+  "Choose an option:",
+    ["📖 View Library", "➕ Add Book", "🔍 Search Books", "📊 Library Statistics"]
 )
 
-# Change current view based on navigation
-if nav_options == "View Library":
+if nav_options == "📖 View Library":
     st.session_state.current_view = "library"
-elif nav_options == "Add Book":
+elif nav_options == "➕ Add Book":
     st.session_state.current_view = "add"
-elif nav_options == "Search Books":
+elif nav_options == "🔍 Search Books":
     st.session_state.current_view = "search"
-elif nav_options == "Library Statistics":
+elif nav_options == "📊 Library Statistics":
     st.session_state.current_view = "stats"
 
 
