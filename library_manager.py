@@ -285,9 +285,7 @@ if lottie_book:
     with st.sidebar:
         st_lottie(lottie_book, height=200, key="book_animation")
 
-# Navigation options
-nav_options = st.sidebar.radio(
-    "Choose an option:",
+
     # Navigation options
 nav_options = st.sidebar.radio(
     "Choose an option:",
