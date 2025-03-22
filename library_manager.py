@@ -416,39 +416,39 @@ elif st.session_state.current_view == "library":
         )
         st.session_state.book_removed = False
 elif st.session_state.current_view == "search":
-    st.markdown("<h2 class='sub-header'> 🔍 Search Books </h2>", unsafe_allow_html=True)
+  st.markdown("<h2 class='sub-header'>🔍 Search Books</h2>", unsafe_allow_html=True)
+  
+    # Search options
+    search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])
+    search_term = st.text_input("Enter search term:")
+    
+    if st.button("Search", use_container_width=False):
+        if search_term:
+            with st.spinner('Searching...'):
+                time.sleep(0.5)  # Slight delay for animation effect
+                search_books(search_term, search_by)
+    
+    # Display search results
+    if hasattr(st.session_state, 'search_results'):
+        if st.session_state.search_results:
+            st.markdown(f"<h3>Found {len(st.session_state.search_results)} results:</h3>", unsafe_allow_html=True)
+            
+            for i, book in enumerate(st.session_state.search_results):
+                st.markdown(f"""
+                <div class='book-card'>
+                    <h3>{book['title']}</h3>
+                    <p><strong>Author:</strong> {book['author']}</p>
+                    <p><strong>Publication Year:</strong> {book['publication_year']}</p>
+                    <p><strong>Genre:</strong> {book['genre']}</p>
+                    <p><span class='{"read-badge" if book["read_status"] else "unread-badge"}'>{
+                        "Read" if book["read_status"] else "Unread"}</span></p>
+                </div>
+                """, unsafe_allow_html=True)
+        elif search_term:
+            st.markdown("<div class='warning-message'>No books found matching your search criteria.</div>", unsafe_allow_html=True)
 
-# Search options
-search_by = st.selectbox("Search by:", ["Title", "Author", "Genre"])  # Removed emojis
-search_term = st.text_input("Enter search term:")
-
-if st.button("Search", use_container_width=False):
-    if search_term.strip():  # Avoid empty searches
-        st.session_state.search_results = []  # Clear previous results
-        with st.spinner('Searching...'):
-            time.sleep(0.5)
-            search_books(search_term.strip(), search_by)
-
-# Display search results
-if st.session_state.search_results:
-    st.markdown(f"<h3>Found {len(st.session_state.search_results)} results:</h3>", unsafe_allow_html=True)
-
-    for i, book in enumerate(st.session_state.search_results):
-        st.markdown(f"""
-        <div class='book-card'>
-            <h3>{book['title']}</h3>
-            <p><strong>Author:</strong> {book['author']}</p>
-            <p><strong>Publication Year:</strong> {book['publication_year']}</p>
-            <p><strong>Genre:</strong> {book['genre']}</p>
-            <p><span class='{"read-badge" if book["read_status"] else "unread-badge"}'>
-                {"Read" if book["read_status"] else "Unread"}
-            </span></p>
-        </div>
-        """, unsafe_allow_html=True)
-else:
-    st.warning("⚠️ No book found.")
-
-
+elif st.session_state.current_view == "stats":
+    
     st.markdown("<h2 class='sub-header'>📊 Library Statistics</h2>", unsafe_allow_html=True)
     
     if not st.session_state.library:
